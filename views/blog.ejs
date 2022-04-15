@@ -1,0 +1,36 @@
+<%- include('./partials/header') %>
+
+<% for (let i = 0; i < places.length; i++) { %>
+    <div class="post">
+        <h1><%= places[i].name %></h1>
+        <h2>Author: <%= places[i].author.username %></h2>
+        <div class="desc">
+            <img class="image" src="<%= places[i].image %>" alt="">
+            <p><%= places[i].description %></p>
+        </div>
+    </div>
+    <form class="form hide" action="/place/<%= places[i].id %>" method="post">
+        <h2>Author: <%= places[i].author.username %></h2>
+        <input id="name" type="text" name="name" placeholder="Name">
+        <div class="desc">
+            <input type="text" name="image" placeholder="Image">
+            <input type="text" name="description" placeholder="Description">
+            <button class="btn">Submit</button>
+        </div>
+    </form>
+    <form class="" action="/place/<%= places[i].id %>">
+        <button class="btn">Delete</button>
+    </form>
+    <button class="edit-btn btn">Edit</button>
+<% } %>
+
+
+<h1>Add New Post</h1>
+<form class="" action="/place" method="post">
+    <input type="text" name="name" placeholder="Name"><br>
+    <input type="text" name="image" placeholder="Image"><br>
+    <input type="text" name="description" placeholder="Description"><br>
+    <button class="btn">Submit</button>
+</form>
+
+<%- include('./partials/footer') %>
